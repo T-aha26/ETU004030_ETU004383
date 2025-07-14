@@ -1,3 +1,4 @@
+use db_s2_ETU004030;
 CREATE TABLE ExamS2_membre (
     id_membre  INT,
     nom VARCHAR(100),
