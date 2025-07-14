@@ -19,7 +19,7 @@ if ($count>0){
     $_SESSION ['idMembre'] = $membre ['idMembre'];
     mysqli_free_result($result);
 
-    header('Location: ../pages/publication.php');
+    header('Location: ../pages/liste.php');
     
 }else if($count == 0){
 
