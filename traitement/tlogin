@@ -1,0 +1,30 @@
+<?php
+require('../inc/connexion.php');
+session_start();
+
+
+ $mail = $_POST ['mail'];
+ $mdp = $_POST ['mdp'];
+ $erreur = $_GET ['erreur'];
+
+$verif = sprintf("SELECT * FROM ExamenS2_membre WHERE email = '%s' AND mdp = '%s'", 
+    $mail, $mdp);
+
+    $result = mysqli_query(connex(), $verif);
+
+    $count = mysqli_num_rows($result);
+
+if ($count>0){
+    $membre = mysqli_fetch_assoc($result);
+    $_SESSION ['idMembre'] = $membre ['idMembre'];
+    mysqli_free_result($result);
+
+    header('Location: ../pages/publication.php');
+    
+}else if($count == 0){
+
+    header("Location: ../pages/login.php?erreur=Identifiants ou mot de passe incorrects.");
+
+}
+?>
+
