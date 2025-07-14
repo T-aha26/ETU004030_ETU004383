@@ -7,14 +7,14 @@ $where = "";
 if (isset($_GET['categorie']) && $_GET['categorie'] != '') {
     $id_categorie = intval($_GET['categorie']);
     $where = "WHERE o.id_categorie = $id_categorie";
-}if (!empty($_GET['nom_objet'])) {
+}
+if (!empty($_GET['nom_objet'])) {
     $nom = $connex->real_escape_string($_GET['nom_objet']);
     $where .= " AND o.nom_objet LIKE '%$nom%'";
 }
 if (!empty($_GET['disponible'])) {
     $where .= " AND e.date_retour IS NULL";
 }
-
 
 $query = "
     SELECT o.id_objet, o.nom_objet, c.nom_categorie, m.nom AS nom_proprietaire, e.date_retour
@@ -70,7 +70,6 @@ $result = $connex->query($query);
     <div class="container">
         <h2 class="mb-4 text-center">Liste des objets</h2>
 
-       
         <form method="get" class="row g-3 align-items-end mb-4">
             <div class="col-md-6">
                 <label class="form-label">Catégorie</label>
@@ -89,16 +88,18 @@ $result = $connex->query($query);
             <div class="col-md-3">
                 <a href="liste.php" class="btn btn-outline-secondary w-100">Réinitialiser</a>
             </div>
-                        <input type="text" name="nom_objet" class="form-control" placeholder="Rechercher par nom..." value="<?= $_GET['nom_objet'] ?? '' ?>">
+            <input type="text" name="nom_objet" class="form-control mt-3" placeholder="Rechercher par nom..." value="<?= $_GET['nom_objet'] ?? '' ?>">
 
-
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="disponible" <?= isset($_GET['disponible']) ? 'checked' : '' ?>>
-        <label class="form-check-label">Disponible uniquement</label>
-        </div>
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" name="disponible" <?= isset($_GET['disponible']) ? 'checked' : '' ?>>
+                <label class="form-check-label">Disponible uniquement</label>
+            </div>
         </form>
-     
+
         <a href="ajout_objet.php"><button type="submit" class="btn btn-primary w-100">Ajouter objet</button></a>
+
+        
+        <a href="fiche_membre.php?id=1" class="btn btn-violet mt-3 mb-4 w-100">Voir la fiche membre</a>
 
         <div class="table-responsive">
             <table class="table table-bordered table-hover align-middle">
@@ -122,7 +123,7 @@ $result = $connex->query($query);
                                 <td>
                                     <?= $row['date_retour'] ? date('d/m/Y', strtotime($row['date_retour'])) : '<span class="text-success fw-bold">Disponible</span>' ?>
                                     <?php if (!$row['date_retour']): ?>
-                                         <a href="emprunter.php?nom=<?= $row['nom_objet'] ?>" class="btn btn-success btn-sm">Emprunter</a>
+                                        <a href="emprunter.php?nom=<?= $row['nom_objet'] ?>" class="btn btn-success btn-sm">Emprunter</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>
