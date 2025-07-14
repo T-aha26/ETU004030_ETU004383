@@ -42,7 +42,7 @@ INSERT INTO ExamS2_membre (id_membre, nom, date_de_naissance, genre, email, vill
 (3, 'Charlie Petit', '2000-02-10', 'M', 'charlie.petit@example.com', 'Marseille', 'password789', 'charlie.jpg'),
 (4, 'David Durand', '1995-07-30', 'M', 'david.durand@example.com', 'Nice', 'password321', 'david.jpg');
 
-INSERT INTO ExamS2_categorie_objet (id_categorie, nom_categorie, id_categorie, ) VALUES
+INSERT INTO ExamS2_categorie_objet (id_categorie, nom_categorie) VALUES
 (1, 'esthétique'),
 (2, 'bricolage'),
 (3, 'mécanique'),
@@ -90,7 +90,7 @@ INSERT ExamS2_objet (id_objet, nom_objet, id_categorie, id_membre ) VALUES
 (39, 'maquillage', 1, 4),
 (40, 'scie', 2, 4);
 
-INSERT ExamS2_objet (id_emprunt, id_objet, id_membre, date_emprunt, date_retour) VALUES
+INSERT ExamS2_emprunt (id_emprunt, id_objet, id_membre, date_emprunt, date_retour) VALUES
 (1, 1, 2, '2025-06-26', '2025-07-26'),
 (2, 2, 3, '2025-06-26', '2025-07-26'),
 (3, 12, 1, '2025-06-26', '2025-07-26'),
