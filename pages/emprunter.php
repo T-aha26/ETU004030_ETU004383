@@ -9,6 +9,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $connex->query("INSERT INTO ExamS2_objet (nom_objet, id_membre) 
                     VALUES ('$nom', $id_membre)");
     $id_objet = $connex->insert_id;
-
     }
 ?>
