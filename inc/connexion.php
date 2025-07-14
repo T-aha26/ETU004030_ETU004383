@@ -4,7 +4,7 @@ function connex()
     static $connex = null;
 
     if ($connex === null) {
-        $connex = mysqli_connect('localhost', 'root', '', 'db_s2_ETU004030');
+        $connex = mysqli_connect('172.60.0.15', 'ETU004030', 'qmVBAuAk', 'db_s2_ETU004030');
 
         if (!$connex) {
             
